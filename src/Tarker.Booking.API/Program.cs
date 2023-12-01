@@ -1,32 +1,55 @@
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Tarker.Booking.Application.Interfaces;
+using Tarker.Booking.Domain.Entities.User;
+using Tarker.Booking.Persistence.DataBase;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add services to the container
+
+// conexion a db.
+var connectionString = builder.Configuration.GetConnectionString("AZSQLConnectionString");
+
+builder.Services.AddDbContext<DBService>(opt => opt.UseSqlServer(connectionString));
+//inyeccion de la interfaz
+builder.Services.AddScoped<IDBService, DBService>();
+
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-});
+
+#region Minimal API para tertear rutas
+//crear Minimal API para testear la API
+//app.MapPost("/createTest", async (IDBService _dbService) =>
+//{
+//    var entity = new UserEntity
+//    {
+//        FirstName = "edwin",
+//        LastName = "martinez",
+//        UserName = "usuario01",
+//        Password = "1206Samu"
+
+//    };
+
+//    await _dbService.User.AddAsync(entity);
+//    await _dbService.SaveAsync();
+
+//    return "create OK";
+//});
+
+
+//app.MapGet("/testGet", async (IDBService _dbService) =>
+//{
+//    var result = await _dbService.User.ToListAsync();
+//    return result;
+//});
+#endregion
+
 
 app.Run();
 
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

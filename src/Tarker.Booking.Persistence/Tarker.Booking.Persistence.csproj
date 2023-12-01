@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Tarker.Booking.Application\Tarker.Booking.Application.csproj" />
     <ProjectReference Include="..\Tarker.Booking.Domain\Tarker.Booking.Domain.csproj" />
   </ItemGroup>
 
