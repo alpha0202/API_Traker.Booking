@@ -16,6 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Tarker.Booking.Application\Tarker.Booking.Application.csproj" />
+    <ProjectReference Include="..\Tarker.Booking.Common\Tarker.Booking.Common.csproj" />
+    <ProjectReference Include="..\Tarker.Booking.External\Tarker.Booking.External.csproj" />
     <ProjectReference Include="..\Tarker.Booking.Persistence\Tarker.Booking.Persistence.csproj" />
   </ItemGroup>
 
