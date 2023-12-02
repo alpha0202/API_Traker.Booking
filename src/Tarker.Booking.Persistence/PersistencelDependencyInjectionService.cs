@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tarker.Booking.Application.Interfaces;
+using Tarker.Booking.Application.DataBase;
 using Tarker.Booking.Persistence.DataBase;
 namespace Tarker.Booking.Persistence
 {

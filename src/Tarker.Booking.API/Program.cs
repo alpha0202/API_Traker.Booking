@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Tarker.Booking.API;
 using Tarker.Booking.Application;
-using Tarker.Booking.Application.Interfaces;
+using Tarker.Booking.Application.DataBase;
 using Tarker.Booking.Common;
 using Tarker.Booking.Domain.Entities.User;
 using Tarker.Booking.External;
